@@ -1,9 +1,7 @@
 import 'package:get/get.dart';
 import 'package:networks_app_admin/bindings/home_bindings.dart';
 import 'package:networks_app_admin/bindings/signin_binding.dart';
-import 'package:networks_app_admin/bindings/signup_binding.dart';
 import 'package:networks_app_admin/features/authentication/screens/signin/signin_screen.dart';
-import 'package:networks_app_admin/features/authentication/screens/signup/signup_screen.dart';
 import 'package:networks_app_admin/features/main/screen/main_screen.dart';
 
 class AppRoutes {
@@ -30,11 +28,5 @@ class AppRoutes {
     //   page: () => const GroupScreen(),
     //   binding: GroupBindings(),
     // ),
-
-    GetPage(
-      name: signup,
-      page: () => const SignupScreen(),
-      binding: SignupBinding(),
-    ),
   ];
 }

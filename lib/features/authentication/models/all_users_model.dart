@@ -1,33 +1,30 @@
-class SigninModel {
+class AllUsersModel {
   bool? status;
-  String? accessToken;
-  int? expiresIn;
-  UserData? userData;
+  List<Response>? response;
 
-  SigninModel({this.status, this.accessToken, this.expiresIn, this.userData});
+  AllUsersModel({this.status, this.response});
 
-  SigninModel.fromJson(Map<String, dynamic> json) {
+  AllUsersModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
-    accessToken = json['access_token'];
-    expiresIn = json['expires_in'];
-    userData = json['user_data'] != null
-        ? UserData.fromJson(json['user_data'])
-        : null;
+    if (json['response'] != null) {
+      response = <Response>[];
+      json['response'].forEach((v) {
+        response!.add(Response.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['status'] = status;
-    data['access_token'] = accessToken;
-    data['expires_in'] = expiresIn;
-    if (userData != null) {
-      data['user_data'] = userData!.toJson();
+    if (response != null) {
+      data['response'] = response!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class UserData {
+class Response {
   int? id;
   String? email;
   String? name;
@@ -35,7 +32,7 @@ class UserData {
   String? createdAt;
   String? updatedAt;
 
-  UserData(
+  Response(
       {this.id,
         this.email,
         this.name,
@@ -43,7 +40,7 @@ class UserData {
         this.createdAt,
         this.updatedAt});
 
-  UserData.fromJson(Map<String, dynamic> json) {
+  Response.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     email = json['email'];
     name = json['name'];
