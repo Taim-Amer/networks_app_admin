@@ -35,19 +35,6 @@ DataRow FileRow({required String fileName, required String updatedDate, required
       ),
       DataCell(Text(updatedDate,style: Theme.of(Get.context!).textTheme.bodyMedium)),
       DataCell(Text(isFree,style: Theme.of(Get.context!).textTheme.bodyMedium?.copyWith(color: isFree == "Free" ? Colors.blue : TColors.yellowColor))),
-      DataCell(isFree == "Free" ? SizedBox(
-        width: 90.w,
-        height: 35.h,
-        child: OutlinedButton(
-          onPressed: () => FileController.instance.checkIn(fileID: fileID),
-          style: OutlinedButton.styleFrom(
-            side: const BorderSide(color: Colors.blue, width: 2),
-            foregroundColor: Colors.blue,
-            backgroundColor: Colors.transparent,
-          ),
-          child: Text("Check", style: Theme.of(Get.context!).textTheme.labelLarge,),
-        ),
-      ) : const SizedBox()),
       DataCell(IconButton(
         onPressed: () => FileController.instance.downloadFile(fileID: fileID),
         icon: Icon(Icons.download, size: 20, color: isFree == "Free" ? Colors.blue : TColors.yellowColor,))),

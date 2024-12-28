@@ -22,63 +22,6 @@ class MyGroups extends StatelessWidget {
     final size = THelperFunctions.screenSize();
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            ElevatedButton.icon(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                  horizontal: TSizes.defaultSpace * 1.5,
-                  vertical: TSizes.defaultSpace / (Responsive.isMobile(context) ? 2 : 1),
-                ),
-              ),
-              onPressed: () => showCreateGroupDialog(context),
-              icon: const Icon(Icons.add),
-              label: const Text("Group"),
-            ),
-            TSizes.md.horizontalSpace,
-            ValueListenableBuilder(
-              valueListenable: GroupGrid.selectedGroupIDNotifier,
-              builder: (context, isSelected, _) => isSelected != null ? ElevatedButton.icon(
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: TSizes.defaultSpace * 1.5,
-                    vertical:
-                    TSizes.defaultSpace / (Responsive.isMobile(context) ? 2 : 1),
-                  ),
-                ),
-                onPressed: () => FileController.instance.addFile(0, isFree: 1),
-                icon: const Icon(Icons.add),
-                label: const Text("File"),
-              ) : const SizedBox(),
-            ),
-            TSizes.md.horizontalSpace,
-            ValueListenableBuilder<int?>(
-              valueListenable: GroupGrid.selectedGroupIDNotifier,
-              builder: (context, selectedGroupId, _) {
-                if (selectedGroupId == null || !GroupController.instance.isUserOwner(selectedGroupId)) {
-                  return const SizedBox();
-                }
-                return ElevatedButton.icon(
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: TSizes.defaultSpace * 1.5,
-                      vertical: TSizes.defaultSpace / (Responsive.isMobile(context) ? 2 : 1),
-                    ),
-                  ),
-                  onPressed: () => FileController.instance.getFileRequest().then((response) {
-                    if (response == true) {
-                      showFileRequestsDialog(Get.context!);
-                    }
-                  }),
-                  icon: const Icon(Iconsax.user, size: 16),
-                  label: const Text("Requests"),
-                );
-              },
-            ),
-          ],
-        ),
-        const SizedBox(height: TSizes.defaultSpace),
         Responsive(
           mobile: GroupGrid(
             crossAxisCount: size.width < 650 ? 2 : 4,

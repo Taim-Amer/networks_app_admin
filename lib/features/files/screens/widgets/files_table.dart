@@ -23,7 +23,7 @@ class FilesTable extends StatelessWidget {
       final files = FileController.instance.fileModel.value;
 
       return TRoundedContainer(
-        height: 400,
+        height: 475,
         width: double.infinity,
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         backgroundColor:
@@ -95,9 +95,6 @@ class FilesTable extends StatelessWidget {
                     "Access",
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
-                ),
-                const DataColumn(
-                  label: Text(""),
                 ),
                 const DataColumn(
                   label: Text(""),

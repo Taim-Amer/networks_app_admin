@@ -54,13 +54,13 @@ class GroupCard extends StatelessWidget {
                         child: SvgPicture.asset("assets/icons/group-svgrepo-com.svg", colorFilter: const ColorFilter.mode(TColors.secondary, BlendMode.srcIn)),
                       ),
                     ),
-                    TRoundedContainer(
-                      backgroundColor: isOwner ? TColors.primaryColor : TColors.yellowColor,
-                      child: Center(child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text(isOwner ? 'Owner' : 'Member', style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500, fontSize: 12)),
-                      )),
-                    )
+                    // TRoundedContainer(
+                    //   backgroundColor: isOwner ? TColors.primaryColor : TColors.yellowColor,
+                    //   child: Center(child: Padding(
+                    //     padding: const EdgeInsets.all(4.0),
+                    //     child: Text(isOwner ? 'Owner' : 'Member', style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500, fontSize: 12)),
+                    //   )),
+                    // )
                   ],
                 ),
                 Text(name, maxLines: 1, overflow: TextOverflow.ellipsis),
